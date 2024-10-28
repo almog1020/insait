@@ -1,0 +1,20 @@
+services:
+  insait:
+    build: .
+    ports:
+      - "8000:5000"
+    environment:
+      # Usually these would be kept as a secret, but because cicd is out of the scope of this exercise, we will put
+      # it directly here.
+      DB_CONNECTION_STRING: "postgresql://postgres:insait@postgres:5432/insait"
+      API_KEY: "sk-svcacct-zUCqdCSPk-uoeQFWj9VJwPuE78PNR5j_16OIiULwqy46w2nW5H_u8hZwa3EhttNFkXFNyT3BlbkFJSg1tHsI9fs7vCHWFF3ctTeb_VYGXP1Ok1EloFqTVIlLuw5l6H5wH7KSu2-6T8yvfqUFAA"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - "8001:5432"
+    environment:
+      POSTGRES_DB: insait
+      POSTGRES_PASSWORD: insait
