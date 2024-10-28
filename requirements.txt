@@ -1,0 +1,6 @@
+flask
+OpenAI
+sqlalchemy
+psycopg2
+flask-sqlalchemy
+gunicorn
